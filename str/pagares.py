@@ -12,7 +12,6 @@ def pagares(tamar: float, tna: float, plazo:int, capital: float = 10**6, fecha: 
     precio = 1 / (1 + (tna/365 * plazo))
     der_mer = d_mercado * min(plazo,90) / 90 * 1.21
     gst_arancel = arancel * min(plazo,365) / 365 * 1.21
-    print(f'Precio: {precio:.6f}, Der. Mercado: {der_mer}, Gst. Arancel: {gst_arancel}')
     
     for i in range(periodos):
         vto = fecha + plazo
@@ -44,11 +43,6 @@ def flujo(tamar: float, tna: float, plazo: int, capital: float = 10**6, fecha: p
     periodos = min(periodo, int(365 / plazo), 12)
     df_pagares = pagares(tamar, tna, plazo, capital, fecha, periodos)
     
-    print(f'Capital: $ {capital:,.0f}')
-    print(f'TAMAR: {tamar:.2%}')
-    print(f'TNA: {tna:.2%}')
-    print(f'Plazo: {plazo}\n')
-    
     fechas = list(df_pagares['Emisión']) + list(df_pagares['Vto.'])
     fechas = {'Fecha': fechas}
     df = pd.DataFrame(fechas)
@@ -71,7 +65,8 @@ def flujo(tamar: float, tna: float, plazo: int, capital: float = 10**6, fecha: p
     tea = float(xirr(dates=df.index, amounts=df['Flujo'])) # type: ignore
     tem = (1+tea)**(30/365) - 1
     
-    print(f'TEM: {tem:.2%}')
-    print(f'TEA: {tea:.2%}')
+    print('Costo de fondearse con pagares:')
+    print(f'    TEM: {tem:.2%}')
+    print(f'    TEA: {tea:.2%}')
     
     return df, tea, tem

@@ -1,11 +1,25 @@
 {
     "cSpell.words": [
+        "Acum",
         "bcbb",
+        "colocacion",
         "comision",
+        "credito",
+        "iibb",
+        "IIBB",
         "interes",
         "Interes",
+        "pyxirr",
         "renovacion",
         "tamar",
         "xirr"
-    ]
+    ],
+    "python.languageServer": "Pylance",
+    "python.analysis.typeCheckingMode": "basic",
+    "editor.quickSuggestions": {
+        "strings": true
+    },
+    "editor.codeLens": true,
+    "editor.parameterHints.enabled": true
 }
+

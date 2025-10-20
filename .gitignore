@@ -1,0 +1,47 @@
+# --- Python ---
+__pycache__/
+*.py[cod]
+*$py.class
+*.pyc
+
+# Entornos virtuales
+venv/
+.env/
+.venv/
+
+# --- Compilación / instalación ---
+build/
+dist/
+*.egg-info/
+
+# --- Archivos temporales ---
+*.log
+*.tmp
+*.bak
+*.swp
+
+# --- Datos y resultados generados ---
+data/
+outputs/
+reports/
+*.xlsx
+*.xlsm
+*.xlsb
+*.csv
+*.pdf
+*.png
+
+# --- Notebooks ---
+.ipynb_checkpoints/
+
+# --- Configuración local ---
+.vscode/
+.idea/
+
+# --- Sistema operativo ---
+.DS_Store
+Thumbs.db
+
+# --- Repos internos ---
+/str/__pycache__/
+/str/*.pyc

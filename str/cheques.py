@@ -37,13 +37,6 @@ def flujo(tna: float, comision: float, plazo: int, capital: float = 10**6, fecha
     
     periodos = min(periodo, int(365 / plazo), 12)
     df_bcbb = deuda_bcbb(tna, comision, plazo, capital, fecha, periodos)
-    print(f'Comisiones y Gts. Dep. Chq.: {gast_dep_chq:.2%}')
-    print(f'Comisiones y Gts. Bco.: {com_gst_bco:.2%}\n')
-    
-    print(f'Capital: $ {capital:,.0f}')
-    print(f'TNA: {tna:.2%}')
-    print(f'Comisiones BCBB: {comision:.2%}')
-    print(f'Plazo: {plazo}\n')
     
     fechas = list(df_bcbb['Emisión']) + list(df_bcbb['Vto.']) + list(df_bcbb['Pago Comisión'])
     fechas = {'Fecha': fechas}
@@ -65,7 +58,8 @@ def flujo(tna: float, comision: float, plazo: int, capital: float = 10**6, fecha
     tea = float(xirr(dates=df.index, amounts=df['Flujo'])) # type: ignore
     tem = (1+tea)**(30/365) - 1 # type: ignore
     
-    print(f'TEM: {tem:.2%}')
-    print(f'TEA: {tea:.2%}')
+    print('Costo de fondearse con inversores de la BCBB:')
+    print(f'    TEM: {tem:.2%}')
+    print(f'    TEA: {tea:.2%}')
     
     return df, tea, tem
