@@ -2,6 +2,7 @@ import pandas as pd
 import numpy_financial as npf
 
 from pyxirr import xirr
+from IPython.display import display
 
 from str.constantes import com_gst_bco
 
@@ -41,7 +42,8 @@ def flujo(tna: float, plazo:int, colocacion: float, cobranza: float, iibb: float
     df.loc[fecha.to_timestamp(), 'Flujo'] = -cap * (1+com_gst_bco)
     df.loc[pago_col.to_timestamp(), 'Flujo'] = -cap * colocacion * (1+com_gst_bco)
 
-    df_ctas = nuevo(tna, plazo, gracia)
+    df_ctas = nuevo(tna, plazo, gracia, cap, fecha)
+    # display(df_ctas.map('$ {:,.2f}'.format))
     df_ctas = df_ctas.reset_index(level='Nro_Cuota')
     for vto in df_ctas.index.get_level_values('Vto.'):
 
