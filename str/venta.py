@@ -2,7 +2,6 @@ import pandas as pd
 import numpy_financial as npf
 
 from pyxirr import xirr
-from IPython.display import display
 
 import str.credito as credito
 from str.constantes import com_gst_bco
